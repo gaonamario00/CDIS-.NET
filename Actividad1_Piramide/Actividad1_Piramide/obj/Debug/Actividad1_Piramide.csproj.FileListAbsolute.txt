@@ -1,0 +1,8 @@
+C:\Users\Lenovo\source\repos\CDIS .NET\Actividad1_Piramide\Actividad1_Piramide\bin\Debug\Actividad1_Piramide.exe.config
+C:\Users\Lenovo\source\repos\CDIS .NET\Actividad1_Piramide\Actividad1_Piramide\bin\Debug\Actividad1_Piramide.exe
+C:\Users\Lenovo\source\repos\CDIS .NET\Actividad1_Piramide\Actividad1_Piramide\bin\Debug\Actividad1_Piramide.pdb
+C:\Users\Lenovo\source\repos\CDIS .NET\Actividad1_Piramide\Actividad1_Piramide\obj\Debug\Actividad1_Piramide.csproj.AssemblyReference.cache
+C:\Users\Lenovo\source\repos\CDIS .NET\Actividad1_Piramide\Actividad1_Piramide\obj\Debug\Actividad1_Piramide.csproj.SuggestedBindingRedirects.cache
+C:\Users\Lenovo\source\repos\CDIS .NET\Actividad1_Piramide\Actividad1_Piramide\obj\Debug\Actividad1_Piramide.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\source\repos\CDIS .NET\Actividad1_Piramide\Actividad1_Piramide\obj\Debug\Actividad1_Piramide.exe
+C:\Users\Lenovo\source\repos\CDIS .NET\Actividad1_Piramide\Actividad1_Piramide\obj\Debug\Actividad1_Piramide.pdb
