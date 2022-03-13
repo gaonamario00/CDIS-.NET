@@ -1,0 +1,8 @@
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa1\Actividad2_CajasDeBanco\Actividad2_CajasDeBanco\obj\Debug\Actividad2_CajasDeBanco.csproj.AssemblyReference.cache
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa1\Actividad2_CajasDeBanco\Actividad2_CajasDeBanco\obj\Debug\Actividad2_CajasDeBanco.csproj.SuggestedBindingRedirects.cache
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa1\Actividad2_CajasDeBanco\Actividad2_CajasDeBanco\obj\Debug\Actividad2_CajasDeBanco.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa1\Actividad2_CajasDeBanco\Actividad2_CajasDeBanco\bin\Debug\Actividad2_CajasDeBanco.exe.config
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa1\Actividad2_CajasDeBanco\Actividad2_CajasDeBanco\bin\Debug\Actividad2_CajasDeBanco.exe
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa1\Actividad2_CajasDeBanco\Actividad2_CajasDeBanco\bin\Debug\Actividad2_CajasDeBanco.pdb
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa1\Actividad2_CajasDeBanco\Actividad2_CajasDeBanco\obj\Debug\Actividad2_CajasDeBanco.exe
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa1\Actividad2_CajasDeBanco\Actividad2_CajasDeBanco\obj\Debug\Actividad2_CajasDeBanco.pdb
