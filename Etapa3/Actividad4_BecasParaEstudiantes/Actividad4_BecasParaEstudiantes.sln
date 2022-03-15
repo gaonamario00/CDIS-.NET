@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Actividad4_BecasParaEstudiantes", "Actividad4_BecasParaEstudiantes\Actividad4_BecasParaEstudiantes.csproj", "{F502A73C-0E9D-4F39-85D2-490635F49850}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F502A73C-0E9D-4F39-85D2-490635F49850}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F502A73C-0E9D-4F39-85D2-490635F49850}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F502A73C-0E9D-4F39-85D2-490635F49850}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F502A73C-0E9D-4F39-85D2-490635F49850}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {201D9F6C-91CE-46D7-9A6F-7F5D8B9C7A7A}
+	EndGlobalSection
+EndGlobal

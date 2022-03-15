@@ -1,0 +1,8 @@
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa3\Actividad4_BecasParaEstudiantes\Actividad4_BecasParaEstudiantes\bin\Debug\Actividad4_BecasParaEstudiantes.exe.config
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa3\Actividad4_BecasParaEstudiantes\Actividad4_BecasParaEstudiantes\bin\Debug\Actividad4_BecasParaEstudiantes.exe
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa3\Actividad4_BecasParaEstudiantes\Actividad4_BecasParaEstudiantes\bin\Debug\Actividad4_BecasParaEstudiantes.pdb
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa3\Actividad4_BecasParaEstudiantes\Actividad4_BecasParaEstudiantes\obj\Debug\Actividad4_BecasParaEstudiantes.csproj.AssemblyReference.cache
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa3\Actividad4_BecasParaEstudiantes\Actividad4_BecasParaEstudiantes\obj\Debug\Actividad4_BecasParaEstudiantes.csproj.SuggestedBindingRedirects.cache
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa3\Actividad4_BecasParaEstudiantes\Actividad4_BecasParaEstudiantes\obj\Debug\Actividad4_BecasParaEstudiantes.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa3\Actividad4_BecasParaEstudiantes\Actividad4_BecasParaEstudiantes\obj\Debug\Actividad4_BecasParaEstudiantes.exe
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa3\Actividad4_BecasParaEstudiantes\Actividad4_BecasParaEstudiantes\obj\Debug\Actividad4_BecasParaEstudiantes.pdb
