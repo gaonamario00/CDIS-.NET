@@ -130,7 +130,7 @@ namespace Actividad4_BecasParaEstudiantes
                 {
                     try
                     {
-                        Console.WriteLine("Seleccione el nivel del estudiante\n1. Licenciatura\n2. Posgrado");
+                        Console.WriteLine("\nSeleccione el nivel del estudiante\n1. Licenciatura\n2. Posgrado");
                         Console.Write("Nivel: ");
                         nivel = int.Parse(Console.ReadLine());
                         nivelIsIncorrect = false;
