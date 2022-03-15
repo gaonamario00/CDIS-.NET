@@ -1,0 +1,8 @@
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa2\Actividad3_Estudiantes\Actividad3_Estudiantes\bin\Debug\Actividad3_Estudiantes.exe.config
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa2\Actividad3_Estudiantes\Actividad3_Estudiantes\bin\Debug\Actividad3_Estudiantes.exe
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa2\Actividad3_Estudiantes\Actividad3_Estudiantes\bin\Debug\Actividad3_Estudiantes.pdb
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa2\Actividad3_Estudiantes\Actividad3_Estudiantes\obj\Debug\Actividad3_Estudiantes.csproj.AssemblyReference.cache
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa2\Actividad3_Estudiantes\Actividad3_Estudiantes\obj\Debug\Actividad3_Estudiantes.csproj.SuggestedBindingRedirects.cache
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa2\Actividad3_Estudiantes\Actividad3_Estudiantes\obj\Debug\Actividad3_Estudiantes.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa2\Actividad3_Estudiantes\Actividad3_Estudiantes\obj\Debug\Actividad3_Estudiantes.exe
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa2\Actividad3_Estudiantes\Actividad3_Estudiantes\obj\Debug\Actividad3_Estudiantes.pdb
