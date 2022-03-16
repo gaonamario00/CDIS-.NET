@@ -10,7 +10,6 @@ namespace Escuela_DAL
 {
     public class FacultadDAL
     {
-
         public DataTable cargarFacultades()
         {
             SqlConnection con = new SqlConnection();

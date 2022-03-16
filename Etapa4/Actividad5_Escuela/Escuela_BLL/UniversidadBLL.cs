@@ -11,7 +11,6 @@ namespace Escuela_BLL
 {
     public class UniversidadBLL
     {
-
         public DataTable cargarUniversidades()
         {
             UniversidadDAL universidad = new UniversidadDAL();

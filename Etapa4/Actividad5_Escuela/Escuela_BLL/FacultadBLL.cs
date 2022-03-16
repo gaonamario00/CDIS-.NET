@@ -10,7 +10,6 @@ namespace Escuela_BLL
 {
     public class FacultadBLL
     {
-
         public DataTable cargarFacultades()
         {
             FacultadDAL facultad = new FacultadDAL();
