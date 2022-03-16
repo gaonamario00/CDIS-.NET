@@ -1,0 +1,9 @@
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Escuela_BLL\bin\Debug\Escuela_BLL.dll
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Escuela_BLL\bin\Debug\Escuela_BLL.pdb
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Escuela_BLL\bin\Debug\Escuela_DAL.dll
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Escuela_BLL\bin\Debug\Escuela_DAL.pdb
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Escuela_BLL\obj\Debug\Escuela_BLL.csproj.AssemblyReference.cache
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Escuela_BLL\obj\Debug\Escuela_BLL.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Escuela_BLL\obj\Debug\Escuela_BLL.csproj.CopyComplete
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Escuela_BLL\obj\Debug\Escuela_BLL.dll
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Escuela_BLL\obj\Debug\Escuela_BLL.pdb

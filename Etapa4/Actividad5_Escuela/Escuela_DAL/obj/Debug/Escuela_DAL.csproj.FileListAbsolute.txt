@@ -1,0 +1,6 @@
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Escuela_DAL\bin\Debug\Escuela_DAL.dll
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Escuela_DAL\bin\Debug\Escuela_DAL.pdb
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Escuela_DAL\obj\Debug\Escuela_DAL.csproj.AssemblyReference.cache
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Escuela_DAL\obj\Debug\Escuela_DAL.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Escuela_DAL\obj\Debug\Escuela_DAL.dll
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Escuela_DAL\obj\Debug\Escuela_DAL.pdb
