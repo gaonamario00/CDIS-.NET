@@ -11,7 +11,7 @@ using Escuela_BLL;
 
 namespace Actividad5_Escuela.Facultades
 {
-    public partial class facultad_u : System.Web.UI.Page
+    public partial class facultad_u : System.Web.UI.Page, IAcceso
     {
 
         #region Eventos
@@ -20,9 +20,16 @@ namespace Actividad5_Escuela.Facultades
         {
             if (!IsPostBack)
             {
-                int ID_Facultad = int.Parse(Request.QueryString["pID_Facultad"]);
-                cargarUniversidades();
-                cargarFacultadByID(ID_Facultad);
+                if (sesionIniciada())
+                {
+                    int ID_Facultad = int.Parse(Request.QueryString["pID_Facultad"]);
+                    cargarUniversidades();
+                    cargarFacultadByID(ID_Facultad);
+                }
+                else
+                {
+                    Response.Redirect("~/Login.aspx");
+                }
             }
         }
 
@@ -69,6 +76,8 @@ namespace Actividad5_Escuela.Facultades
 
         public void updateFacultad()
         {
+            //int pID_Facultad = int.Parse(Request.QueryString["pID_Facultad"]);
+
             FacultadBLL facultadBLL = new FacultadBLL();
 
             int ID_Facultad = int.Parse(lblID.Text);
@@ -77,7 +86,27 @@ namespace Actividad5_Escuela.Facultades
             DateTime fechaCreacion = Convert.ToDateTime(TextFechaCreacion.Text);
             int universidad = int.Parse(ddlUniversidad.SelectedValue);
 
-            facultadBLL.updateFacultad( ID_Facultad, codigo, nombre, fechaCreacion, universidad);
+            try
+            {
+                facultadBLL.updateFacultad(ID_Facultad, codigo, nombre, fechaCreacion, universidad);
+            }
+            catch (Exception ex)
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Alta", "alert('" + ex.Message + "')", true);
+            }
+
+        }
+
+        public bool sesionIniciada()
+        {
+            if (Session["Usuario"] != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         #endregion

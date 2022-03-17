@@ -123,5 +123,55 @@ namespace Escuela_DAL
             con.Close();
         }
 
+        public DataTable cargarFacultadByCodigo(string codigo)
+        {
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = @"Server=MARIOGAONA\SQLEXPRESS;Database=Escuela;Trusted_connection=true";
+
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "sp_cargarFacultadByCodigo";
+            command.Connection = con;
+
+            command.Parameters.AddWithValue("pCodigo", codigo);
+
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            DataTable dtFacultad = new DataTable();
+
+            con.Open();
+
+            adapter.SelectCommand = command;
+            adapter.Fill(dtFacultad);
+
+            con.Close();
+
+            return dtFacultad;
+        }
+
+        public DataTable cargarFacultadByCodigoExceptID(int ID_Facultad)
+        {
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = @"Server=MARIOGAONA\SQLEXPRESS;Database=Escuela;Trusted_connection=true";
+
+            SqlCommand command = new SqlCommand();
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "sp_cargarFacultadByCodigoExceptID";
+            command.Connection = con;
+
+            command.Parameters.AddWithValue("pID_Facultad", ID_Facultad);
+
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            DataTable dtFacultad = new DataTable();
+
+            con.Open();
+
+            adapter.SelectCommand = command;
+            adapter.Fill(dtFacultad);
+
+            con.Close();
+
+            return dtFacultad;
+        }
+
     }
 }

@@ -44,6 +44,7 @@
     <Compile Include="FacultadBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UniversidadBLL.cs" />
+    <Compile Include="UsuarioBLL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Escuela_DAL\Escuela_DAL.csproj">

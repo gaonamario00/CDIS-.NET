@@ -12,7 +12,7 @@ using Escuela_BLL;
 
 namespace Actividad5_Escuela.Facultades
 {
-    public partial class facultad_i : System.Web.UI.Page
+    public partial class facultad_i : System.Web.UI.Page, IAcceso
     {
         #region Eventos
 
@@ -20,14 +20,22 @@ namespace Actividad5_Escuela.Facultades
         {
             if (!IsPostBack)
             {
-                cargarUniversidades();
+                if (sesionIniciada())
+                {
+                    cargarUniversidades();
+                    cargarTabla();
+                }
+                else
+                {
+                    Response.Redirect("~/Login.aspx");
+                }                
             }
         }
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
             agregarFacultad();
-            Page.ClientScript.RegisterStartupScript(this.GetType(),"Alta", "alert('Facultad agregada exitosamente')", true);
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "Alta", "alert('Facultad agregada exitosamente')", true);
         }
 
         #endregion
@@ -43,9 +51,27 @@ namespace Actividad5_Escuela.Facultades
             DateTime fechaCreacion = Convert.ToDateTime(TextFechaCreacion.Text);
             int universidad = int.Parse(ddlUniversidad.SelectedValue);
 
-            facultadBLL.agregarFacultad(codigo, nombre, fechaCreacion, universidad);
+            try
+            {
+                facultadBLL.agregarFacultad(codigo, nombre, fechaCreacion, universidad);
+                Console.WriteLine("A");
+                limpiarCampos();
 
+                DataTable dtfacultades = new DataTable();
+                dtfacultades = (DataTable)ViewState["tablaFacultades"];
+
+                dtfacultades.Rows.Add(codigo, nombre);
+
+                grd_facultades.DataSource = dtfacultades;
+                grd_facultades.DataBind();
         }
+            catch (Exception ex)
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Error", "alert('"+ex.Message+"')", true);
+        }
+
+
+    }
 
         public void cargarUniversidades()
         {
@@ -60,6 +86,36 @@ namespace Actividad5_Escuela.Facultades
             ddlUniversidad.DataBind();
 
             ddlUniversidad.Items.Insert(0, new ListItem("---- Selecione Universidad ----","0"));
+
+        }
+
+        public bool sesionIniciada()
+        {
+            if (Session["Usuario"] != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void limpiarCampos()
+        {
+            TextCodigo.Text = "";
+            TextNombre.Text = "";
+            TextFechaCreacion.Text = "";
+            ddlUniversidad.SelectedIndex = 0;
+        }
+
+        public void cargarTabla()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("codigo");
+            dt.Columns.Add("nombre");
+
+            ViewState["tablaFacultades"] = dt;
 
         }
 

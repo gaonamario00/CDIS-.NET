@@ -11,7 +11,7 @@ using Escuela_BLL;
 
 namespace Actividad5_Escuela.Facultades
 {
-    public partial class facultad_d : System.Web.UI.Page
+    public partial class facultad_d : System.Web.UI.Page, IAcceso
     {
 
         #region Eventos
@@ -20,9 +20,16 @@ namespace Actividad5_Escuela.Facultades
         {
             if (!IsPostBack)
             {
-                int ID_Facultad = int.Parse(Request.QueryString["pID_Facultad"]);
-                cargarUniversidades();
-                cargarFacultadByID(ID_Facultad);
+                if (sesionIniciada())
+                {
+                    int ID_Facultad = int.Parse(Request.QueryString["pID_Facultad"]);
+                    cargarUniversidades();
+                    cargarFacultadByID(ID_Facultad);
+                }
+                else
+                {
+                    Response.Redirect("~/Login.aspx");
+                }
             }
         }
 
@@ -30,7 +37,7 @@ namespace Actividad5_Escuela.Facultades
         {
             deleteFacultad();
             //Response.Redirect("~/Facultades/facultad_s.aspx");
-            Page.ClientScript.RegisterStartupScript(this.GetType(), "Alta", "alert('Facultad eliminada exitosamente')", true);
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "Delete", "alert('Facultad eliminada exitosamente')", true);
             
         }
 
@@ -77,6 +84,18 @@ namespace Actividad5_Escuela.Facultades
             int ID_Facultad = int.Parse(lblID.Text);
 
             facultadBLL.deleteFacultad(ID_Facultad);
+        }
+
+        public bool sesionIniciada()
+        {
+            if (Session["Usuario"] != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         #endregion

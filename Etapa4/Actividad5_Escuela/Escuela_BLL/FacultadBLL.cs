@@ -19,7 +19,33 @@ namespace Escuela_BLL
         public void agregarFacultad(string codigo, string nombre, DateTime fechaCreacion, int universidad)
         {
             FacultadDAL facultad = new FacultadDAL();
-            facultad.agregarFacultad(codigo, nombre, fechaCreacion, universidad);
+            DataTable dtFacultad = cargarFacultadByCodigo(codigo);
+
+            if(dtFacultad.Rows.Count > 0)
+            {
+                throw new Exception("El código de la facultad ya existe, introduce un código diferente");
+            }
+            else
+            {
+                int tiempo = DateTime.Now.Year - fechaCreacion.Year;
+
+                if(tiempo > 122)
+                {
+                    throw new Exception("Fecha no permitida, introduce una fecha mayor a 1900");
+                }
+                else
+                {
+                    if (tiempo < 12)
+                    {
+                        throw new Exception("Fecha no permitida, introduce una fecha menor a 2010");
+                    }
+                    else
+                    {
+                        facultad.agregarFacultad(codigo, nombre, fechaCreacion, universidad);
+                    }
+                }
+            }
+
         }
 
         public DataTable cargarFacultadByID(int id)
@@ -31,13 +57,54 @@ namespace Escuela_BLL
         public void updateFacultad(int ID_Facultad, string codigo, string nombre, DateTime fechaCreacion, int universidad)
         {
             FacultadDAL facultad = new FacultadDAL();
-            facultad.updateFacultad(ID_Facultad, codigo, nombre, fechaCreacion, universidad);
+            DataTable dtFacultad = cargarFacultadByCodigoExceptID(ID_Facultad);
+
+            if (dtFacultad.Rows.Count > 0)
+            {
+                for (int i=0; i< dtFacultad.Rows.Count; i++)
+                {
+                    if (dtFacultad.Rows[i]["codigo"].ToString().Equals(codigo))
+                    {
+                        throw new Exception("El codigo de la facultad ya existe, introduce un código diferente");
+                    }
+                }
+            }
+            else
+            {
+                int tiempo = DateTime.Now.Year - fechaCreacion.Year;
+
+                if (tiempo > 122)
+                {
+                    throw new Exception("Fecha no permitida, introduce una fecha mayor a 1900");
+                }
+                else
+                {
+                    if (tiempo < 12)
+                    {
+                        throw new Exception("Fecha no permitida, introduce una fecha menor a 2010");
+                    }
+                    else
+                    {
+                        facultad.updateFacultad(ID_Facultad, codigo, nombre, fechaCreacion, universidad);
+                    }
+                }
+            }
         }
 
         public void deleteFacultad(int ID_Facultad)
         {
             FacultadDAL facultad = new FacultadDAL();
             facultad.deleteFacultad(ID_Facultad);
+        }
+        public DataTable cargarFacultadByCodigo(string codigo)
+        {
+            FacultadDAL facultad = new FacultadDAL();
+            return facultad.cargarFacultadByCodigo(codigo);
+        }
+        public DataTable cargarFacultadByCodigoExceptID(int ID_Facultad)
+        {
+            FacultadDAL facultad = new FacultadDAL();
+            return facultad.cargarFacultadByCodigoExceptID(ID_Facultad);
         }
 
     }

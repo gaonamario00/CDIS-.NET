@@ -2,8 +2,15 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
    
+    <br />
     <asp:GridView ID="grd_facultad" AutoGenerateColumns="false" runat="server" OnRowCommand="grd_facultad_RowCommand" >
         <Columns>
+
+            <asp:BoundField HeaderText="ID" DataField="ID_Facultad" />
+            <asp:BoundField HeaderText="Codigo" DataField="codigo" />
+            <asp:BoundField HeaderText="Nombre" DataField="nombre" />
+            <asp:BoundField HeaderText="Fecha de Creacion" DataField="fechaCreacion" DataFormatString="{0:dd/MM/yyyy}" />
+            <asp:BoundField HeaderText="IDUniversidad" DataField="nombreUniversidad" />
 
             <asp:TemplateField>
                 <ItemTemplate>
@@ -19,11 +26,6 @@
                 </ItemTemplate>
             </asp:TemplateField>
 
-            <asp:BoundField HeaderText="ID" DataField="ID_Facultad" />
-            <asp:BoundField HeaderText="Codigo" DataField="codigo" />
-            <asp:BoundField HeaderText="Nombre" DataField="nombre" />
-            <asp:BoundField HeaderText="Fecha de Creacion" DataField="fechaCreacion" DataFormatString="{0:dd/MM/yyyy}" />
-            <asp:BoundField HeaderText="IDUniversidad" DataField="nombreUniversidad" />
         </Columns>
 
     </asp:GridView>
