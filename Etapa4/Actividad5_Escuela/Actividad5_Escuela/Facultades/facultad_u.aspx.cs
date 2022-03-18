@@ -110,7 +110,6 @@ namespace Actividad5_Escuela.Facultades
             try
             {
                 facultadBLL.updateFacultad(ID_Facultad, codigo, nombre, fechaCreacion, universidad, ciudad);
-                //Page.ClientScript.RegisterStartupScript(this.GetType(), "Alta", "alert('nose')", true);
             }
             catch (Exception ex)
             {
