@@ -12,7 +12,7 @@ using Escuela_BLL;
 
 namespace Actividad5_Escuela.Facultades
 {
-    public partial class facultad_i : System.Web.UI.Page, IAcceso
+    public partial class facultad_i : TemaEscuela, IAcceso
     {
         #region Eventos
 
@@ -23,6 +23,7 @@ namespace Actividad5_Escuela.Facultades
                 if (sesionIniciada())
                 {
                     cargarUniversidades();
+                    cargarEstados();
                     cargarTabla();
                 }
                 else
@@ -38,6 +39,19 @@ namespace Actividad5_Escuela.Facultades
             Page.ClientScript.RegisterStartupScript(this.GetType(), "Alta", "alert('Facultad agregada exitosamente')", true);
         }
 
+        protected void ddlEstado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlEstado.SelectedIndex != 0)
+            {
+                ddlCiudad.Items.Clear();
+                cargarCiudadesPorEstado();
+            }
+            else
+            {
+                ddlCiudad.Items.Clear();
+            }
+        }
+
         #endregion
 
         #region Metodos
@@ -50,10 +64,11 @@ namespace Actividad5_Escuela.Facultades
             string nombre = TextNombre.Text;
             DateTime fechaCreacion = Convert.ToDateTime(TextFechaCreacion.Text);
             int universidad = int.Parse(ddlUniversidad.SelectedValue);
+            int ciudad  = int.Parse(ddlCiudad.SelectedValue);
 
             try
             {
-                facultadBLL.agregarFacultad(codigo, nombre, fechaCreacion, universidad);
+                facultadBLL.agregarFacultad(codigo, nombre, fechaCreacion, universidad, ciudad);
                 Console.WriteLine("A");
                 limpiarCampos();
 
@@ -85,7 +100,7 @@ namespace Actividad5_Escuela.Facultades
             ddlUniversidad.DataValueField = "ID_Universidad";
             ddlUniversidad.DataBind();
 
-            ddlUniversidad.Items.Insert(0, new ListItem("---- Selecione Universidad ----","0"));
+            ddlUniversidad.Items.Insert(0, new ListItem(" -------- Selecione Universidad --------", "0"));
 
         }
 
@@ -117,6 +132,36 @@ namespace Actividad5_Escuela.Facultades
 
             ViewState["tablaFacultades"] = dt;
 
+        }
+
+        public void cargarEstados()
+        {
+            EstadosBLL estado = new EstadosBLL();
+            DataTable dtEstados = new DataTable();
+
+            dtEstados = estado.cargarEstados();
+
+            ddlEstado.DataSource = dtEstados;
+            ddlEstado.DataTextField = "nombre";
+            ddlEstado.DataValueField = "ID_Estado";
+            ddlEstado.DataBind();
+
+            ddlEstado.Items.Insert(0, new ListItem("---- Selecciones Estado ----", "0"));
+        }
+
+        public void cargarCiudadesPorEstado()
+        {
+            CiudadBLL ciudad = new CiudadBLL();
+            DataTable dtCiudad = new DataTable();
+
+            dtCiudad = ciudad.cargarCiudadesPorEstado(int.Parse(ddlEstado.SelectedValue));
+
+            ddlCiudad.DataSource = dtCiudad;
+            ddlCiudad.DataTextField = "nombre";
+            ddlCiudad.DataValueField = "ID_Ciudad";
+            ddlCiudad.DataBind();
+
+            ddlCiudad.Items.Insert(0, new ListItem("---- Selecciones Ciudad ----", "0"));
         }
 
         #endregion

@@ -105,11 +105,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Themes\Tema2\Site2.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\login.css" />
+    <Content Include="App_Themes\Tema1\Site1.css" />
     <Content Include="Facultades\facultad_d.aspx" />
     <Content Include="Facultades\facultad_i.aspx" />
     <Content Include="Facultades\facultad_s.aspx" />
@@ -219,6 +221,9 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="TemaEscuela.cs">
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

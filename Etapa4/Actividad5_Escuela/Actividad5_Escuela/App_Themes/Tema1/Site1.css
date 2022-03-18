@@ -1,4 +1,20 @@
-﻿/* Move down content because we have a fixed navbar that is 50px tall */
+﻿
+.navbar-inverse {
+    background-color: #138950;
+    border-color: #080808;
+}
+
+/*Color de Facultades*/
+.navbar-inverse .navbar-nav > li > a {
+    color: #ffffff;
+}
+
+/*Color de Dar de alta Facultad*/
+.navbar-inverse .navbar-brand {
+    color: #ffffff;
+}
+
+/* Move down content because we have a fixed navbar that is 50px tall */
 body {
     padding-top: 50px;
     padding-bottom: 20px;

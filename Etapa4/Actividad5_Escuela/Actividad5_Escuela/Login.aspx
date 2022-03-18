@@ -6,21 +6,24 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+    <link href="Content/login.css" rel="stylesheet" />
 </head>
+
 <body>
-    <form id="form1" runat="server">
-        <div>
-
-            <table>
-
+    
+    <form id="formLogin" runat="server">
+        <h1 class="gradient-text">Bienvenido!</h1>
+        <%--<div class="padre" id="imgLogin"></div>--%>
+        <div class="center" >
+            <table class="padre" >
                 <tr>
-                    <td>Nombre de usuario: </td>
+                    <td style="text-align: left">Usuario: </td>
                     <td>
                         <asp:TextBox ID="TextUsuario" runat="server" ></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
-                    <td>Contraseña: </td>
+                    <td style="text-align: left">Contraseña: </td>
                     <td>
                         <asp:TextBox ID="TextContrasena" runat="server"  TextMode="Password"></asp:TextBox>
                     </td>
@@ -37,4 +40,6 @@
         </div>
     </form>
 </body>
+
+
 </html>

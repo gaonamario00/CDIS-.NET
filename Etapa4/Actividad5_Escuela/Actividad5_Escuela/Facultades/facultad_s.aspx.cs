@@ -13,7 +13,7 @@ using Escuela_BLL;
 
 namespace Actividad5_Escuela.Facultades
 {
-    public partial class Facultad_s : System.Web.UI.Page, IAcceso
+    public partial class Facultad_s : TemaEscuela, IAcceso
     {
         #region Eventos
         protected void Page_Load(object sender, EventArgs e)
@@ -37,6 +37,7 @@ namespace Actividad5_Escuela.Facultades
             if(e.CommandName == "Editar")
             {
                 Response.Redirect("~/Facultades/facultad_u.aspx?pID_Facultad="+e.CommandArgument);
+               // Context.ApplicationInstance.CompleteRequest();
             }
             else
             {

@@ -11,7 +11,7 @@ using Escuela_BLL;
 
 namespace Actividad5_Escuela.Facultades
 {
-    public partial class facultad_d : System.Web.UI.Page, IAcceso
+    public partial class facultad_d : TemaEscuela, IAcceso
     {
 
         #region Eventos

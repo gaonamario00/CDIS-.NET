@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="facultad_u.aspx.cs" Inherits="Actividad5_Escuela.Facultades.facultad_u" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+    <br />
     <table>
          <tr>
              <td>ID:</td>
@@ -45,6 +46,18 @@
                 <asp:DropDownList ID="ddlUniversidad" runat="server"></asp:DropDownList>
               <asp:RequiredFieldValidator ID="rfv_universidad" runat="server" ControlToValidate ="ddlUniversidad"
                     ErrorMessage="Campo universidad es obligatorio" ValidationGroup="vlg1" InitialValue="0" Display="Dynamic"></asp:RequiredFieldValidator>
+            </td>
+        </tr>
+        <tr>
+            <td>Estado: </td>
+            <td>
+                <asp:DropDownList ID="ddlEstado" runat="server" OnSelectedIndexChanged="ddlEstado_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+            </td>
+        </tr>
+        <tr>
+            <td>Ciudad: </td>
+            <td>
+                <asp:DropDownList ID="ddlCiudad" runat="server"></asp:DropDownList>
             </td>
         </tr>
         <tr>

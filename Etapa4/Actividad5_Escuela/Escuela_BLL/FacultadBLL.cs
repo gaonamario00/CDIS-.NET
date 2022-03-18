@@ -16,7 +16,7 @@ namespace Escuela_BLL
             return facultad.cargarFacultades();
         }
 
-        public void agregarFacultad(string codigo, string nombre, DateTime fechaCreacion, int universidad)
+        public void agregarFacultad(string codigo, string nombre, DateTime fechaCreacion, int universidad, int ciudad)
         {
             FacultadDAL facultad = new FacultadDAL();
             DataTable dtFacultad = cargarFacultadByCodigo(codigo);
@@ -41,7 +41,7 @@ namespace Escuela_BLL
                     }
                     else
                     {
-                        facultad.agregarFacultad(codigo, nombre, fechaCreacion, universidad);
+                        facultad.agregarFacultad(codigo, nombre, fechaCreacion, universidad, ciudad);
                     }
                 }
             }
@@ -54,7 +54,7 @@ namespace Escuela_BLL
             return facultad.cargarFacultadByID(id);
         }
 
-        public void updateFacultad(int ID_Facultad, string codigo, string nombre, DateTime fechaCreacion, int universidad)
+        public void updateFacultad(int ID_Facultad, string codigo, string nombre, DateTime fechaCreacion, int universidad, int ciudad)
         {
             FacultadDAL facultad = new FacultadDAL();
             DataTable dtFacultad = cargarFacultadByCodigoExceptID(ID_Facultad);
@@ -85,7 +85,7 @@ namespace Escuela_BLL
                     }
                     else
                     {
-                        facultad.updateFacultad(ID_Facultad, codigo, nombre, fechaCreacion, universidad);
+                        facultad.updateFacultad(ID_Facultad, codigo, nombre, fechaCreacion, universidad, ciudad);
                     }
                 }
             }

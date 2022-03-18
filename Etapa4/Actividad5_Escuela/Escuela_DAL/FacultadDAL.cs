@@ -33,7 +33,7 @@ namespace Escuela_DAL
             return dtFacultades;
         }
 
-        public void agregarFacultad(string codigo, string nombre, DateTime fechaCreacion, int universidad)
+        public void agregarFacultad(string codigo, string nombre, DateTime fechaCreacion, int universidad, int ciudad)
         {
             SqlConnection con = new SqlConnection();
             con.ConnectionString = @"Server=MARIOGAONA\SQLEXPRESS;Database=Escuela;Trusted_connection=true";
@@ -48,6 +48,7 @@ namespace Escuela_DAL
             command.Parameters.AddWithValue("pNombre", nombre);
             command.Parameters.AddWithValue("pFechaCreacion",fechaCreacion);
             command.Parameters.AddWithValue("pUniversidad", universidad);
+            command.Parameters.AddWithValue("pCiudad", ciudad);
 
             con.Open();
 
@@ -81,7 +82,7 @@ namespace Escuela_DAL
             return dtFacultad;
         }
 
-        public void updateFacultad(int ID_Facultad, string codigo, string nombre, DateTime fechaCreacion, int universidad)
+        public void updateFacultad(int ID_Facultad, string codigo, string nombre, DateTime fechaCreacion, int universidad, int ciudad)
         {
             SqlConnection con = new SqlConnection();
             con.ConnectionString = @"Server=MARIOGAONA\SQLEXPRESS;Database=Escuela;Trusted_connection=true";
@@ -96,6 +97,7 @@ namespace Escuela_DAL
             command.Parameters.AddWithValue("pNombre", nombre);
             command.Parameters.AddWithValue("pFechaCreacion", fechaCreacion);
             command.Parameters.AddWithValue("pUniversidad", universidad);
+            command.Parameters.AddWithValue("pCiudad", ciudad);
 
             con.Open();
 
