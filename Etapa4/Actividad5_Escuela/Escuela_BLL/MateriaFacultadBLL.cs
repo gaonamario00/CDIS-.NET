@@ -17,5 +17,11 @@ namespace Escuela_BLL
             materiaDAL.agregarMateriaFacultad(materia);
         }
 
+        public void eliminarMaterias(int ID_Facultad)
+        {
+            MateriaFacultadDAL materiaDAL = new MateriaFacultadDAL();
+            materiaDAL.eliminarMaterias(ID_Facultad);
+        }
+
     }
 }

@@ -53,6 +53,7 @@ namespace Escuela_BLL
 
                             foreach (MateriaFacultad materia in listMaterias)
                             {
+                                materia.Facultad = paramFacultad.ID_Facultad;
                                 mateFacuBLL.agregarMateriaFacultad(materia);
                             }
                             ts.Complete();
@@ -69,23 +70,37 @@ namespace Escuela_BLL
             return facultad.cargarFacultadByID(id);
         }
 
-        public void updateFacultad(Facultad paramFacultad
+        public void updateFacultad(Facultad paramFacultad, List<MateriaFacultad> listMateriaFacu
             //int ID_Facultad, string codigo, string nombre, DateTime fechaCreacion, int universidad, int ciudad
             )
         {
             FacultadDAL facultad = new FacultadDAL();
             DataTable dtFacultad = cargarFacultadByCodigoExceptID(paramFacultad.ID_Facultad);
+            MateriaFacultadBLL matFacuBLL = new MateriaFacultadBLL();
 
-            if (dtFacultad.Rows.Count > 0)
+            using (TransactionScope ts = new TransactionScope())
             {
-                for (int i=0; i< dtFacultad.Rows.Count; i++)
+                facultad.updateFacultad(paramFacultad);
+
+                matFacuBLL.eliminarMaterias(paramFacultad.ID_Facultad);
+
+                foreach (MateriaFacultad materia in listMateriaFacu)
                 {
-                    if (dtFacultad.Rows[i]["codigo"].ToString().Equals(paramFacultad.codigo))
+                    matFacuBLL.agregarMateriaFacultad(materia);
+                }
+                ts.Complete();
+            }
+
+                if (dtFacultad.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dtFacultad.Rows.Count; i++)
                     {
-                        throw new Exception("El codigo de la facultad ya existe, introduce un código diferente");
+                        if (dtFacultad.Rows[i]["codigo"].ToString().Equals(paramFacultad.codigo))
+                        {
+                            throw new Exception("El codigo de la facultad ya existe, introduce un código diferente");
+                        }
                     }
                 }
-            }
   
                 int tiempo = DateTime.Now.Year - paramFacultad.fechaCreacion.Year;
 
@@ -112,7 +127,17 @@ namespace Escuela_BLL
         public void deleteFacultad(int ID_Facultad)
         {
             FacultadDAL facultad = new FacultadDAL();
-            facultad.deleteFacultad(ID_Facultad);
+            MateriaFacultadBLL matFacuBLL = new MateriaFacultadBLL();
+
+            using (TransactionScope ts = new TransactionScope())
+            {
+                matFacuBLL.eliminarMaterias(ID_Facultad);
+                facultad.deleteFacultad(ID_Facultad);
+
+                ts.Complete();
+            }
+
+                facultad.deleteFacultad(ID_Facultad);
         }
         public Facultad cargarFacultadByCodigo(string codigo)
         {

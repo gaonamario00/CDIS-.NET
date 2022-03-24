@@ -81,7 +81,6 @@ namespace Actividad5_Escuela.Facultades
                     {
                         materiaFacu = new MateriaFacultad();
                         materiaFacu.Materia = int.Parse(item.Value);
-                        materiaFacu.Facultad = facultad.ID_Facultad;
                         listMaterias.Add(materiaFacu);
                     }
                 }

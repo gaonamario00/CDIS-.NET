@@ -26,7 +26,7 @@
         <tr>
             <td>Fecha de Creacion: </td>
             <td>
-                <asp:TextBox ID="TextFechaCreacion" MaxLength="10" runat="server"></asp:TextBox>
+                <asp:TextBox ID="TextFechaCreacion" AutoCompleteType="Disabled" MaxLength="10" runat="server" ></asp:TextBox>
                  <asp:RequiredFieldValidator ID="rfv_fechaCreacion" runat="server" ControlToValidate ="TextFechaCreacion"
                     ErrorMessage="Campo fecha es obligatorio" ValidationGroup="vlg1" Display="Dynamic"></asp:RequiredFieldValidator>
                 <asp:CompareValidator ID="cv_fecha" runat="server" ErrorMessage="El formato es incorrecto (dd/mm/yyyy) o (yyyy/mm/dd)" 

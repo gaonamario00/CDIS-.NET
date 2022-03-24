@@ -86,6 +86,15 @@ namespace Actividad5_Escuela.Facultades
             //ddlCiudad.SelectedValue = dtFacultad.Rows[0]["ciudad"].ToString();
             ddlCiudad.SelectedValue = facultad.ciudad.ToString();
 
+            cargarMaterias();
+            List<MateriaFacultad> listMaterias = new List<MateriaFacultad>();
+            listMaterias = facultad.MateriaFacultad.ToList();
+
+            foreach (MateriaFacultad materiaFacu in listMaterias)
+            {
+                ListBoxMaterias.Items.FindByValue(materiaFacu.Materia.ToString()).Selected = true;
+            }
+
         }
 
         public void cargarUniversidades()
@@ -126,9 +135,23 @@ namespace Actividad5_Escuela.Facultades
             facultad.universidad = int.Parse(ddlUniversidad.SelectedValue);
             facultad.ciudad = int.Parse(ddlCiudad.SelectedValue);
 
+            MateriaFacultad materiaFacu;
+            List<MateriaFacultad> listMatFacu = new List<MateriaFacultad>();
+
+            foreach (ListItem item in ListBoxMaterias.Items)
+            {
+                if (item.Selected)
+                {
+                    materiaFacu = new MateriaFacultad();
+                    materiaFacu.Materia = int.Parse(item.Value);
+                    materiaFacu.Facultad = facultad.ID_Facultad;
+                    listMatFacu.Add(materiaFacu);
+                }
+            }
+
             try
             {
-                facultadBLL.updateFacultad(facultad
+                facultadBLL.updateFacultad(facultad, listMatFacu
                     //ID_Facultad, codigo, nombre, fechaCreacion, universidad, ciudad
                     );
             }
@@ -179,6 +202,20 @@ namespace Actividad5_Escuela.Facultades
             ddlCiudad.DataBind();
 
             ddlCiudad.Items.Insert(0, new ListItem("---- Selecciones Ciudad ----", "0"));
+        }
+
+        public void cargarMaterias()
+        {
+            MateriaBLL materia = new MateriaBLL();
+            List<Materia> listMaterias = new List<Materia>();
+
+            listMaterias = materia.cargarMaterias();
+
+            ListBoxMaterias.DataSource = listMaterias;
+            ListBoxMaterias.DataTextField = "nombre";
+            ListBoxMaterias.DataValueField = "ID_Materia";
+            ListBoxMaterias.DataBind();
+
         }
 
         #endregion

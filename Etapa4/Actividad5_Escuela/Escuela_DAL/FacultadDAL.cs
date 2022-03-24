@@ -153,9 +153,13 @@ namespace Escuela_DAL
         public void deleteFacultad(int ID_Facultad)
         {
 
+
             var facultad = (from mfacultad in modelo.Facultad
                             where mfacultad.ID_Facultad == ID_Facultad
                             select mfacultad).FirstOrDefault();
+
+            //MateriaFacultadDAL materia = new MateriaFacultadDAL();
+            //materia.eliminarMaterias(ID_Facultad);
 
             modelo.Facultad.Remove(facultad);
             modelo.SaveChanges();

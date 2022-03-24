@@ -22,5 +22,18 @@ namespace Escuela_DAL
             modelo.SaveChanges();
         }
 
+        public void eliminarMaterias(int ID_Facultad)
+        {
+            var materias = (from mMaterias in modelo.MateriaFacultad
+                            where mMaterias.Facultad == ID_Facultad
+                            select mMaterias).ToList();
+
+            foreach (var materia in materias)
+            {
+                modelo.MateriaFacultad.Remove(materia);
+                modelo.SaveChanges();
+            }
+        }
+
     }
 }
