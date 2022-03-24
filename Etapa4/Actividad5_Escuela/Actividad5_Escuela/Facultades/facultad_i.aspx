@@ -26,7 +26,7 @@
         <tr>
             <td>Fecha de Creacion: </td>
             <td>
-                <asp:TextBox ID="TextFechaCreacion" runat="server"></asp:TextBox>
+                <asp:TextBox ID="TextFechaCreacion" MaxLength="10" runat="server"></asp:TextBox>
                  <asp:RequiredFieldValidator ID="rfv_fechaCreacion" runat="server" ControlToValidate ="TextFechaCreacion"
                     ErrorMessage="Campo fecha es obligatorio" ValidationGroup="vlg1" Display="Dynamic"></asp:RequiredFieldValidator>
                 <asp:CompareValidator ID="cv_fecha" runat="server" ErrorMessage="El formato es incorrecto (dd/mm/yyyy) o (yyyy/mm/dd)" 
@@ -37,7 +37,7 @@
         <tr>
             <td>Universidad: </td>
             <td>
-                <asp:DropDownList ID="ddlUniversidad" runat="server"></asp:DropDownList>
+                <asp:DropDownList ID="ddlUniversidad" CssClass="lista" runat="server"></asp:DropDownList>
               <asp:RequiredFieldValidator ID="rfv_universidad" runat="server" ControlToValidate ="ddlUniversidad"
                     ErrorMessage="Campo universidad es obligatorio" ValidationGroup="vlg1" InitialValue="0" Display="Dynamic"></asp:RequiredFieldValidator>
             </td>
@@ -45,13 +45,19 @@
         <tr>
             <td>Estado: </td>
             <td>
-                <asp:DropDownList ID="ddlEstado" runat="server" OnSelectedIndexChanged="ddlEstado_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                <asp:DropDownList ID="ddlEstado" CssClass="lista" runat="server" OnSelectedIndexChanged="ddlEstado_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
             </td>
         </tr>
         <tr>
             <td>Ciudad: </td>
             <td>
-                <asp:DropDownList ID="ddlCiudad" runat="server"></asp:DropDownList>
+                <asp:DropDownList ID="ddlCiudad" CssClass="lista" runat="server"></asp:DropDownList>
+            </td>
+        </tr>
+        <tr>
+            <td>Materias: </td>
+            <td>
+                <asp:ListBox ID="ListBoxMaterias" SelectionMode="Multiple" Width="150px" runat="server" CssClass="lista"></asp:ListBox>
             </td>
         </tr>
         <tr>
@@ -70,5 +76,37 @@
         </Columns>
 
     </asp:GridView>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("#MainContent_TextFechaCreacion").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1900:2010",
+                dateFormat: "dd-mm-yy"
+            });
+
+            $(".lista").chosen();
+
+        });
+
+        var manager = Sys.WebForms.PageRequestManager.getInstance();
+        manager.add_endRequest(function () {
+
+            $("#MainContent_TextFechaCreacion").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1900:2010",
+                dateFormat: "dd-mm-yy"
+            });
+
+            $(".lista").chosen();
+
+        });
+
+
+    </script>
 
 </asp:Content>

@@ -8,6 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 using Escuela_BLL;
+using Escuela_DAL;
 
 namespace Actividad5_Escuela.Facultades
 {
@@ -48,25 +49,32 @@ namespace Actividad5_Escuela.Facultades
         public void cargarFacultadByID(int id)
         {
             FacultadBLL facultadBLL = new FacultadBLL();
-            DataTable dtFacultad = new DataTable();
+            
+            Facultad facultad = new Facultad();
 
-            dtFacultad = facultadBLL.cargarFacultadByID(id);
+            facultad = facultadBLL.cargarFacultadByID(id);
 
-            lblID.Text = dtFacultad.Rows[0]["ID_Facultad"].ToString();
-            lblCodigo.Text = dtFacultad.Rows[0]["codigo"].ToString();
-            lblNombre.Text = dtFacultad.Rows[0]["nombre"].ToString();
-            lblFechaCreacion.Text = dtFacultad.Rows[0]["fechaCreacion"].ToString().Substring(0, 10);
-            ddlUniversidad.SelectedValue = dtFacultad.Rows[0]["universidad"].ToString();
+            lblID.Text = facultad.ID_Facultad.ToString();
+            lblCodigo.Text = facultad.codigo;
+            lblNombre.Text = facultad.nombre;
+            lblFechaCreacion.Text = facultad.fechaCreacion.ToString();
+            ddlUniversidad.SelectedValue = facultad.universidad.ToString();
+
+            //lblID.Text = dtFacultad.Rows[0]["ID_Facultad"].ToString();
+            //lblCodigo.Text = dtFacultad.Rows[0]["codigo"].ToString();
+            //lblNombre.Text = dtFacultad.Rows[0]["nombre"].ToString();
+            //lblFechaCreacion.Text = dtFacultad.Rows[0]["fechaCreacion"].ToString().Substring(0, 10);
+            //ddlUniversidad.SelectedValue = dtFacultad.Rows[0]["universidad"].ToString();
         }
 
         public void cargarUniversidades()
         {
             UniversidadBLL universidadBLL = new UniversidadBLL();
-            DataTable dtUniversidades = new DataTable();
+            List<Universidad> universidadList = new List<Universidad>();
 
-            dtUniversidades = universidadBLL.cargarUniversidades();
+            universidadList = universidadBLL.cargarUniversidades();
 
-            ddlUniversidad.DataSource = dtUniversidades;
+            ddlUniversidad.DataSource = universidadList;
             ddlUniversidad.DataTextField = "nombre";
             ddlUniversidad.DataValueField = "ID_Universidad";
             ddlUniversidad.DataBind();

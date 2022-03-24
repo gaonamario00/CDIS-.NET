@@ -14,8 +14,9 @@
     </asp:PlaceHolder>
 
     <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/jquery-ui.css" rel="stylesheet" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-
+    <link href="Content/chosen.css" rel="stylesheet" />
 </head>
 <body>
     <form runat="server">
@@ -35,6 +36,8 @@
                 <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
                 <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
                 <asp:ScriptReference Name="WebFormsBundle" />
+                <asp:ScriptReference Path="~/Scripts/jquery-ui.js" />
+                <asp:ScriptReference Path="~/Scripts/chosen.jquery.js" />
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>

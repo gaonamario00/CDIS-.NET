@@ -8,6 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 using Escuela_BLL;
+using Escuela_DAL;
 
 namespace Actividad5_Escuela.Facultades
 {
@@ -60,32 +61,41 @@ namespace Actividad5_Escuela.Facultades
         {
           
             FacultadBLL facultadBLL = new FacultadBLL();
-            DataTable dtFacultad = new DataTable();
 
-            dtFacultad = facultadBLL.cargarFacultadByID(id);
+            Facultad facultad = new Facultad();
 
-            lblID.Text = dtFacultad.Rows[0]["ID_Facultad"].ToString();
-            TextCodigo.Text = dtFacultad.Rows[0]["codigo"].ToString();
-            TextNombre.Text = dtFacultad.Rows[0]["nombre"].ToString();
-            TextFechaCreacion.Text = dtFacultad.Rows[0]["fechaCreacion"].ToString().Substring(0,10);
-            ddlUniversidad.SelectedValue = dtFacultad.Rows[0]["universidad"].ToString();
+            facultad = facultadBLL.cargarFacultadByID(id);
+
+            lblID.Text = facultad.ID_Facultad.ToString();
+            TextCodigo.Text = facultad.codigo;
+            TextNombre.Text = facultad.nombre;
+            TextFechaCreacion.Text = facultad.fechaCreacion.ToString().Substring(0, 10);
+            ddlUniversidad.SelectedValue = facultad.universidad.ToString();
+
+            //lblID.Text = dtFacultad.Rows[0]["ID_Facultad"].ToString();
+            //TextCodigo.Text = dtFacultad.Rows[0]["codigo"].ToString();
+            //TextNombre.Text = dtFacultad.Rows[0]["nombre"].ToString();
+            //TextFechaCreacion.Text = dtFacultad.Rows[0]["fechaCreacion"].ToString().Substring(0,10);
+            //ddlUniversidad.SelectedValue = dtFacultad.Rows[0]["universidad"].ToString();
 
             cargarEstados();
-            ddlEstado.SelectedValue = dtFacultad.Rows[0]["estado"].ToString();
+            ddlEstado.SelectedValue = facultad.Ciudad1.estado.ToString();
+            //ddlEstado.SelectedValue = dtFacultad.Rows[0]["estado"].ToString();
 
             cargarCiudadesPorEstado();
-            ddlCiudad.SelectedValue = dtFacultad.Rows[0]["ciudad"].ToString();
+            //ddlCiudad.SelectedValue = dtFacultad.Rows[0]["ciudad"].ToString();
+            ddlCiudad.SelectedValue = facultad.ciudad.ToString();
 
         }
 
         public void cargarUniversidades()
         {
             UniversidadBLL universidadBLL = new UniversidadBLL();
-            DataTable dtUniversidades = new DataTable();
+              List<Universidad> universidadList = new List<Universidad>();
 
-           dtUniversidades = universidadBLL.cargarUniversidades();
+            universidadList = universidadBLL.cargarUniversidades();
 
-            ddlUniversidad.DataSource = dtUniversidades;
+            ddlUniversidad.DataSource = universidadList;
             ddlUniversidad.DataTextField = "nombre";
             ddlUniversidad.DataValueField = "ID_Universidad";
             ddlUniversidad.DataBind();
@@ -100,16 +110,27 @@ namespace Actividad5_Escuela.Facultades
 
             FacultadBLL facultadBLL = new FacultadBLL();
 
-            int ID_Facultad = int.Parse(lblID.Text);
-            string codigo = TextCodigo.Text;
-            string nombre = TextNombre.Text;
-            DateTime fechaCreacion = Convert.ToDateTime(TextFechaCreacion.Text);
-            int universidad = int.Parse(ddlUniversidad.SelectedValue);
-            int ciudad = int.Parse(ddlCiudad.SelectedValue);
+            //int ID_Facultad = int.Parse(lblID.Text);
+            //string codigo = TextCodigo.Text;
+            //string nombre = TextNombre.Text;
+            //DateTime fechaCreacion = Convert.ToDateTime(TextFechaCreacion.Text);
+            //int universidad = int.Parse(ddlUniversidad.SelectedValue);
+            //int ciudad = int.Parse(ddlCiudad.SelectedValue);
+
+            Facultad facultad = new Facultad();
+
+            facultad.ID_Facultad = int.Parse(lblID.Text);
+            facultad.codigo = TextCodigo.Text;
+            facultad.nombre = TextNombre.Text;
+            facultad.fechaCreacion = Convert.ToDateTime(TextFechaCreacion.Text);
+            facultad.universidad = int.Parse(ddlUniversidad.SelectedValue);
+            facultad.ciudad = int.Parse(ddlCiudad.SelectedValue);
 
             try
             {
-                facultadBLL.updateFacultad(ID_Facultad, codigo, nombre, fechaCreacion, universidad, ciudad);
+                facultadBLL.updateFacultad(facultad
+                    //ID_Facultad, codigo, nombre, fechaCreacion, universidad, ciudad
+                    );
             }
             catch (Exception ex)
             {

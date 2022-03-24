@@ -5,29 +5,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Escuela_DAL;
+using System.Transactions;
 
 namespace Escuela_BLL
 {
     public class FacultadBLL
     {
-        public DataTable cargarFacultades()
+        public List<Object> cargarFacultades()
         {
             FacultadDAL facultad = new FacultadDAL();
             return facultad.cargarFacultades();
         }
 
-        public void agregarFacultad(string codigo, string nombre, DateTime fechaCreacion, int universidad, int ciudad)
+        public void agregarFacultad(Facultad paramFacultad, List<MateriaFacultad> listMaterias
+            //string codigo, string nombre, DateTime fechaCreacion, int universidad, int ciudad
+            )
         {
             FacultadDAL facultad = new FacultadDAL();
-            DataTable dtFacultad = cargarFacultadByCodigo(codigo);
+            Facultad facu = new Facultad();
+            MateriaFacultadBLL mateFacuBLL = new MateriaFacultadBLL();
 
-            if(dtFacultad.Rows.Count > 0)
+            facu = cargarFacultadByCodigo(paramFacultad.codigo);
+
+            if (facu != null)
             {
                 throw new Exception("El código de la facultad ya existe, introduce un código diferente");
             }
             else
             {
-                int tiempo = DateTime.Now.Year - fechaCreacion.Year;
+                int tiempo = DateTime.Now.Year - paramFacultad.fechaCreacion.Year;
 
                 if(tiempo > 122)
                 {
@@ -41,36 +47,47 @@ namespace Escuela_BLL
                     }
                     else
                     {
-                        facultad.agregarFacultad(codigo, nombre, fechaCreacion, universidad, ciudad);
+                        using (TransactionScope ts = new TransactionScope())
+                        {
+                            facultad.agregarFacultad(paramFacultad);
+
+                            foreach (MateriaFacultad materia in listMaterias)
+                            {
+                                mateFacuBLL.agregarMateriaFacultad(materia);
+                            }
+                            ts.Complete();
+                        }
                     }
                 }
             }
 
         }
 
-        public DataTable cargarFacultadByID(int id)
+        public Facultad cargarFacultadByID(int id)
         {
             FacultadDAL facultad = new FacultadDAL();
             return facultad.cargarFacultadByID(id);
         }
 
-        public void updateFacultad(int ID_Facultad, string codigo, string nombre, DateTime fechaCreacion, int universidad, int ciudad)
+        public void updateFacultad(Facultad paramFacultad
+            //int ID_Facultad, string codigo, string nombre, DateTime fechaCreacion, int universidad, int ciudad
+            )
         {
             FacultadDAL facultad = new FacultadDAL();
-            DataTable dtFacultad = cargarFacultadByCodigoExceptID(ID_Facultad);
+            DataTable dtFacultad = cargarFacultadByCodigoExceptID(paramFacultad.ID_Facultad);
 
             if (dtFacultad.Rows.Count > 0)
             {
                 for (int i=0; i< dtFacultad.Rows.Count; i++)
                 {
-                    if (dtFacultad.Rows[i]["codigo"].ToString().Equals(codigo))
+                    if (dtFacultad.Rows[i]["codigo"].ToString().Equals(paramFacultad.codigo))
                     {
                         throw new Exception("El codigo de la facultad ya existe, introduce un código diferente");
                     }
                 }
             }
   
-                int tiempo = DateTime.Now.Year - fechaCreacion.Year;
+                int tiempo = DateTime.Now.Year - paramFacultad.fechaCreacion.Year;
 
                 if (tiempo > 122)
                 {
@@ -84,7 +101,9 @@ namespace Escuela_BLL
                     }
                     else
                     {
-                        facultad.updateFacultad(ID_Facultad, codigo, nombre, fechaCreacion, universidad, ciudad);
+                        facultad.updateFacultad(paramFacultad
+                            //ID_Facultad, codigo, nombre, fechaCreacion, universidad, ciudad
+                            );
                     }
                 }
             
@@ -95,7 +114,7 @@ namespace Escuela_BLL
             FacultadDAL facultad = new FacultadDAL();
             facultad.deleteFacultad(ID_Facultad);
         }
-        public DataTable cargarFacultadByCodigo(string codigo)
+        public Facultad cargarFacultadByCodigo(string codigo)
         {
             FacultadDAL facultad = new FacultadDAL();
             return facultad.cargarFacultadByCodigo(codigo);

@@ -7,3 +7,6 @@ C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Escuela_BLL\obj
 C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Escuela_BLL\obj\Debug\Escuela_BLL.csproj.CopyComplete
 C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Escuela_BLL\obj\Debug\Escuela_BLL.dll
 C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Escuela_BLL\obj\Debug\Escuela_BLL.pdb
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Escuela_BLL\bin\Debug\EntityFramework.dll
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Escuela_BLL\bin\Debug\Escuela_DAL.dll.config
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Escuela_BLL\bin\Debug\EntityFramework.xml

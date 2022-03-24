@@ -10,144 +10,202 @@ namespace Escuela_DAL
 {
     public class FacultadDAL
     {
-        public DataTable cargarFacultades()
+
+        EscuelaEntities modelo;
+
+        public FacultadDAL()
         {
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = @"Server=MARIOGAONA\SQLEXPRESS;Database=Escuela;Trusted_connection=true";
-
-            SqlCommand command = new SqlCommand();
-            command.CommandType = CommandType.StoredProcedure;
-            command.CommandText = "sp_cargarFacultades";
-            command.Connection = con;
-
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            DataTable dtFacultades = new DataTable();
-
-            con.Open();
-
-            adapter.SelectCommand = command;
-            adapter.Fill(dtFacultades);
-
-            con.Close();
-
-            return dtFacultades;
+            modelo = new EscuelaEntities();
         }
 
-        public void agregarFacultad(string codigo, string nombre, DateTime fechaCreacion, int universidad, int ciudad)
+        public List<Object> cargarFacultades()
         {
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = @"Server=MARIOGAONA\SQLEXPRESS;Database=Escuela;Trusted_connection=true";
+            var facultades = from mFacultades in modelo.Facultad
+                             select new
+                             {
+                                 ID_Facultad = mFacultades.ID_Facultad,
+                                 codigo = mFacultades.codigo,
+                                 nombre = mFacultades.nombre,
+                                 fechaCreacion = mFacultades.fechaCreacion,
+                                 nombreUniversidad = mFacultades.Universidad1.nombre,
+                                 nombreCiudad = mFacultades.Ciudad1.nombre
+                             };
+            return facultades.AsEnumerable<Object>().ToList();
+            //SqlConnection con = new SqlConnection();
+            //con.ConnectionString = @"Server=MARIOGAONA\SQLEXPRESS;Database=Escuela;Trusted_connection=true";
 
-            SqlCommand command = new SqlCommand();
-            command.CommandType = CommandType.StoredProcedure;
-            command.CommandText = "sp_agregarFacultad";
-            command.Connection = con;
+            //SqlCommand command = new SqlCommand();
+            //command.CommandType = CommandType.StoredProcedure;
+            //command.CommandText = "sp_cargarFacultades";
+            //command.Connection = con;
 
-            //command.Parameters.AddWithValue("pID", int.Parse(TextID.Text));
-            command.Parameters.AddWithValue("pCodigo", codigo);
-            command.Parameters.AddWithValue("pNombre", nombre);
-            command.Parameters.AddWithValue("pFechaCreacion",fechaCreacion);
-            command.Parameters.AddWithValue("pUniversidad", universidad);
-            command.Parameters.AddWithValue("pCiudad", ciudad);
+            //SqlDataAdapter adapter = new SqlDataAdapter();
+            //DataTable dtFacultades = new DataTable();
 
-            con.Open();
+            //con.Open();
 
-            command.ExecuteNonQuery();
+            //adapter.SelectCommand = command;
+            //adapter.Fill(dtFacultades);
 
-            con.Close();
+            //con.Close();
+
+            //return dtFacultades;
+        }
+
+        public void agregarFacultad(Facultad facultad
+            //string codigo, string nombre, DateTime fechaCreacion, int universidad, int ciudad
+            )
+        {
+            modelo.Facultad.Add(facultad);
+            modelo.SaveChanges();
+            //SqlConnection con = new SqlConnection();
+            //con.ConnectionString = @"Server=MARIOGAONA\SQLEXPRESS;Database=Escuela;Trusted_connection=true";
+
+            //SqlCommand command = new SqlCommand();
+            //command.CommandType = CommandType.StoredProcedure;
+            //command.CommandText = "sp_agregarFacultad";
+            //command.Connection = con;
+
+            ////command.Parameters.AddWithValue("pID", int.Parse(TextID.Text));
+            //command.Parameters.AddWithValue("pCodigo", codigo);
+            //command.Parameters.AddWithValue("pNombre", nombre);
+            //command.Parameters.AddWithValue("pFechaCreacion",fechaCreacion);
+            //command.Parameters.AddWithValue("pUniversidad", universidad);
+            //command.Parameters.AddWithValue("pCiudad", ciudad);
+
+            //con.Open();
+
+            //command.ExecuteNonQuery();
+
+            //con.Close();
+
         }
         
-        public DataTable cargarFacultadByID(int id)
+        public Facultad cargarFacultadByID(int id)
         {
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = @"Server=MARIOGAONA\SQLEXPRESS;Database=Escuela;Trusted_connection=true";
+            var facultad = (from mfacultad in modelo.Facultad
+                             where mfacultad.ID_Facultad == id
+                             select mfacultad).FirstOrDefault();
+            return facultad;
+            //SqlConnection con = new SqlConnection();
+            //con.ConnectionString = @"Server=MARIOGAONA\SQLEXPRESS;Database=Escuela;Trusted_connection=true";
 
-            SqlCommand command = new SqlCommand();
-            command.CommandType = CommandType.StoredProcedure;
-            command.CommandText = "sp_cargarFacultadByID";
-            command.Connection = con;
+            //SqlCommand command = new SqlCommand();
+            //command.CommandType = CommandType.StoredProcedure;
+            //command.CommandText = "sp_cargarFacultadByID";
+            //command.Connection = con;
 
-            command.Parameters.AddWithValue("pID_Facultad", id);
+            //command.Parameters.AddWithValue("pID_Facultad", id);
 
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            DataTable dtFacultad = new DataTable();
+            //SqlDataAdapter adapter = new SqlDataAdapter();
+            //DataTable dtFacultad = new DataTable();
 
-            con.Open();
+            //con.Open();
 
-            adapter.SelectCommand = command;
-            adapter.Fill(dtFacultad);
+            //adapter.SelectCommand = command;
+            //adapter.Fill(dtFacultad);
 
-            con.Close();
+            //con.Close();
 
-            return dtFacultad;
+            //return dtFacultad;
         }
 
-        public void updateFacultad(int ID_Facultad, string codigo, string nombre, DateTime fechaCreacion, int universidad, int ciudad)
+        public void updateFacultad( Facultad pFacultad
+            //int ID_Facultad, string codigo, string nombre, DateTime fechaCreacion, int universidad, int ciudad
+            )
+
         {
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = @"Server=MARIOGAONA\SQLEXPRESS;Database=Escuela;Trusted_connection=true";
 
-            SqlCommand command = new SqlCommand();
-            command.CommandType = CommandType.StoredProcedure;
-            command.CommandText = "sp_modificarFacultad";
-            command.Connection = con;
+            var facultad = (from mfacultad in modelo.Facultad
+                            where mfacultad.ID_Facultad == pFacultad.ID_Facultad
+                            select mfacultad).FirstOrDefault();
 
-            command.Parameters.AddWithValue("pID_Facultad", ID_Facultad);
-            command.Parameters.AddWithValue("pCodigo", codigo);
-            command.Parameters.AddWithValue("pNombre", nombre);
-            command.Parameters.AddWithValue("pFechaCreacion", fechaCreacion);
-            command.Parameters.AddWithValue("pUniversidad", universidad);
-            command.Parameters.AddWithValue("pCiudad", ciudad);
+            facultad.nombre = pFacultad.nombre;
+            facultad.codigo = pFacultad.codigo;
+            facultad.fechaCreacion = pFacultad.fechaCreacion;
+            facultad.universidad = pFacultad.universidad;
+            facultad.ciudad = pFacultad.ciudad;
 
-            con.Open();
+            modelo.SaveChanges();
 
-            command.ExecuteNonQuery();
+            //SqlConnection con = new SqlConnection();
+            //con.ConnectionString = @"Server=MARIOGAONA\SQLEXPRESS;Database=Escuela;Trusted_connection=true";
 
-            con.Close();
+            //SqlCommand command = new SqlCommand();
+            //command.CommandType = CommandType.StoredProcedure;
+            //command.CommandText = "sp_modificarFacultad";
+            //command.Connection = con;
+
+            //command.Parameters.AddWithValue("pID_Facultad", ID_Facultad);
+            //command.Parameters.AddWithValue("pCodigo", codigo);
+            //command.Parameters.AddWithValue("pNombre", nombre);
+            //command.Parameters.AddWithValue("pFechaCreacion", fechaCreacion);
+            //command.Parameters.AddWithValue("pUniversidad", universidad);
+            //command.Parameters.AddWithValue("pCiudad", ciudad);
+
+            //con.Open();
+
+            //command.ExecuteNonQuery();
+
+            //con.Close();
         }
 
         public void deleteFacultad(int ID_Facultad)
         {
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = @"Server=MARIOGAONA\SQLEXPRESS;Database=Escuela;Trusted_connection=true";
 
-            SqlCommand command = new SqlCommand();
-            command.CommandType = CommandType.StoredProcedure;
-            command.CommandText = "sp_eliminarFacultad";
-            command.Connection = con;
+            var facultad = (from mfacultad in modelo.Facultad
+                            where mfacultad.ID_Facultad == ID_Facultad
+                            select mfacultad).FirstOrDefault();
 
-            command.Parameters.AddWithValue("pID_Facultad", ID_Facultad);
+            modelo.Facultad.Remove(facultad);
+            modelo.SaveChanges();
 
-            con.Open();
+            //SqlConnection con = new SqlConnection();
+            //con.ConnectionString = @"Server=MARIOGAONA\SQLEXPRESS;Database=Escuela;Trusted_connection=true";
 
-            command.ExecuteNonQuery();
+            //SqlCommand command = new SqlCommand();
+            //command.CommandType = CommandType.StoredProcedure;
+            //command.CommandText = "sp_eliminarFacultad";
+            //command.Connection = con;
 
-            con.Close();
+            //command.Parameters.AddWithValue("pID_Facultad", ID_Facultad);
+
+            //con.Open();
+
+            //command.ExecuteNonQuery();
+
+            //con.Close();
         }
 
-        public DataTable cargarFacultadByCodigo(string codigo)
+        public Facultad cargarFacultadByCodigo(string codigo)
         {
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = @"Server=MARIOGAONA\SQLEXPRESS;Database=Escuela;Trusted_connection=true";
 
-            SqlCommand command = new SqlCommand();
-            command.CommandType = CommandType.StoredProcedure;
-            command.CommandText = "sp_cargarFacultadByCodigo";
-            command.Connection = con;
+            var facultad = (from mfacultad in modelo.Facultad
+                            where mfacultad.codigo.Equals(codigo)
+                            select mfacultad).FirstOrDefault();
+            return facultad;
 
-            command.Parameters.AddWithValue("pCodigo", codigo);
+            //SqlConnection con = new SqlConnection();
+            //con.ConnectionString = @"Server=MARIOGAONA\SQLEXPRESS;Database=Escuela;Trusted_connection=true";
 
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            DataTable dtFacultad = new DataTable();
+            //SqlCommand command = new SqlCommand();
+            //command.CommandType = CommandType.StoredProcedure;
+            //command.CommandText = "sp_cargarFacultadByCodigo";
+            //command.Connection = con;
 
-            con.Open();
+            //command.Parameters.AddWithValue("pCodigo", codigo);
 
-            adapter.SelectCommand = command;
-            adapter.Fill(dtFacultad);
+            //SqlDataAdapter adapter = new SqlDataAdapter();
+            //DataTable dtFacultad = new DataTable();
 
-            con.Close();
+            //con.Open();
 
-            return dtFacultad;
+            //adapter.SelectCommand = command;
+            //adapter.Fill(dtFacultad);
+
+            //con.Close();
+
+            //return dtFacultad;
         }
 
         public DataTable cargarFacultadByCodigoExceptID(int ID_Facultad)

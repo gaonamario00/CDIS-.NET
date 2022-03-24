@@ -110,6 +110,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\chosen.css" />
+    <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\login.css" />
     <Content Include="App_Themes\Tema1\Site1.css" />
     <Content Include="Facultades\facultad_d.aspx" />
@@ -133,10 +135,12 @@
     <Content Include="Login.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\chosen.jquery.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
     <Content Include="Scripts\WebForms\Focus.js" />
@@ -252,6 +256,10 @@
     <ProjectReference Include="..\Escuela_BLL\Escuela_BLL.csproj">
       <Project>{a4589aca-bc9c-4c49-886b-b9b8b7b7d29e}</Project>
       <Name>Escuela_BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Escuela_DAL\Escuela_DAL.csproj">
+      <Project>{d25d3a96-4ba6-464a-924d-e9dc8118507e}</Project>
+      <Name>Escuela_DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

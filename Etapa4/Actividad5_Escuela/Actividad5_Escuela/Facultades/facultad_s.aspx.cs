@@ -49,15 +49,15 @@ namespace Actividad5_Escuela.Facultades
 
         #region Metodos
 
-        public DataTable cargarFacultades()
+        public List<Object> cargarFacultades()
         {
 
             FacultadBLL facultadBLL = new FacultadBLL();
-            DataTable dtFacultades = new DataTable();
+            List<Object> listFacultades = new List<Object>();
 
-            dtFacultades = facultadBLL.cargarFacultades();
+            listFacultades = facultadBLL.cargarFacultades();
 
-            return dtFacultades;
+            return listFacultades;
         }
 
         public bool sesionIniciada()

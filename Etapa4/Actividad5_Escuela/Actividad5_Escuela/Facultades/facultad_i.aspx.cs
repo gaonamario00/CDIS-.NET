@@ -9,6 +9,7 @@ using System.Data;
 using System.Data.SqlClient;
 
 using Escuela_BLL;
+using Escuela_DAL;
 
 namespace Actividad5_Escuela.Facultades
 {
@@ -25,6 +26,7 @@ namespace Actividad5_Escuela.Facultades
                     cargarUniversidades();
                     cargarEstados();
                     cargarTabla();
+                    cargarMaterias();
                 }
                 else
                 {
@@ -60,22 +62,38 @@ namespace Actividad5_Escuela.Facultades
 
             FacultadBLL facultadBLL = new FacultadBLL();
 
-            string codigo = TextCodigo.Text;
-            string nombre = TextNombre.Text;
-            DateTime fechaCreacion = Convert.ToDateTime(TextFechaCreacion.Text);
-            int universidad = int.Parse(ddlUniversidad.SelectedValue);
-            int ciudad  = int.Parse(ddlCiudad.SelectedValue);
+            Facultad facultad = new Facultad();
+
+            facultad.codigo = TextCodigo.Text.ToString();
+            facultad.nombre = TextNombre.Text;
+            facultad.fechaCreacion = Convert.ToDateTime(TextFechaCreacion.Text);
+            facultad.universidad = int.Parse(ddlUniversidad.SelectedValue);
+            facultad.ciudad = int.Parse(ddlCiudad.SelectedValue);
 
             try
             {
-                facultadBLL.agregarFacultad(codigo, nombre, fechaCreacion, universidad, ciudad);
-                Console.WriteLine("A");
+                MateriaFacultad materiaFacu;
+                List<MateriaFacultad> listMaterias = new List<MateriaFacultad>();
+
+                foreach (ListItem item in ListBoxMaterias.Items)
+                {
+                    if (item.Selected)
+                    {
+                        materiaFacu = new MateriaFacultad();
+                        materiaFacu.Materia = int.Parse(item.Value);
+                        materiaFacu.Facultad = facultad.ID_Facultad;
+                        listMaterias.Add(materiaFacu);
+                    }
+                }
+
+
+                facultadBLL.agregarFacultad(facultad, listMaterias);
                 limpiarCampos();
 
                 DataTable dtfacultades = new DataTable();
                 dtfacultades = (DataTable)ViewState["tablaFacultades"];
 
-                dtfacultades.Rows.Add(codigo, nombre);
+                dtfacultades.Rows.Add(facultad.codigo, facultad.nombre);
 
                 grd_facultades.DataSource = dtfacultades;
                 grd_facultades.DataBind();
@@ -91,11 +109,12 @@ namespace Actividad5_Escuela.Facultades
         public void cargarUniversidades()
         {
             UniversidadBLL universidad = new UniversidadBLL();
-            DataTable dtUniversidades = new DataTable();
 
-            dtUniversidades = universidad.cargarUniversidades();
+            List<Universidad> universidadList = new List<Universidad>();
 
-            ddlUniversidad.DataSource = dtUniversidades;
+            universidadList = universidad.cargarUniversidades();
+
+            ddlUniversidad.DataSource = universidadList;
             ddlUniversidad.DataTextField = "nombre";
             ddlUniversidad.DataValueField = "ID_Universidad";
             ddlUniversidad.DataBind();
@@ -162,6 +181,20 @@ namespace Actividad5_Escuela.Facultades
             ddlCiudad.DataBind();
 
             ddlCiudad.Items.Insert(0, new ListItem("---- Selecciones Ciudad ----", "0"));
+        }
+
+        public void cargarMaterias()
+        {
+            MateriaBLL materia = new MateriaBLL();
+            List<Materia> listMaterias = new List<Materia>();
+
+            listMaterias = materia.cargarMaterias();
+
+            ListBoxMaterias.DataSource = listMaterias;
+            ListBoxMaterias.DataTextField = "nombre";
+            ListBoxMaterias.DataValueField = "ID_Materia";
+            ListBoxMaterias.DataBind();
+
         }
 
         #endregion

@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EscuelaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Alumno">
+    <Key>
+      <PropertyRef Name="matricula" />
+    </Key>
+    <Property Name="matricula" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="semestre" Type="Int32" Nullable="false" />
+    <Property Name="facultad" Type="Int32" Nullable="false" />
+    <Property Name="ciudad" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Ciudad1" Relationship="Self.FK_Alumno_Ciudad" FromRole="Alumno" ToRole="Ciudad" />
+    <NavigationProperty Name="Facultad1" Relationship="Self.FK_Alumno_Facultad" FromRole="Alumno" ToRole="Facultad" />
+  </EntityType>
+  <EntityType Name="Ciudad">
+    <Key>
+      <PropertyRef Name="ID_Ciudad" />
+    </Key>
+    <Property Name="ID_Ciudad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="estado" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Alumno" Relationship="Self.FK_Alumno_Ciudad" FromRole="Ciudad" ToRole="Alumno" />
+    <NavigationProperty Name="Facultad" Relationship="Self.FK__Facultad__ciudad__693CA210" FromRole="Ciudad" ToRole="Facultad" />
+    <NavigationProperty Name="Universidad" Relationship="Self.FK__Universid__ciuda__656C112C" FromRole="Ciudad" ToRole="Universidad" />
+    <NavigationProperty Name="Estado1" Relationship="Self.FK_Ciudad_Estado" FromRole="Ciudad" ToRole="Estado" />
+  </EntityType>
+  <EntityType Name="Estado">
+    <Key>
+      <PropertyRef Name="ID_Estado" />
+    </Key>
+    <Property Name="ID_Estado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Ciudad" Relationship="Self.FK_Ciudad_Estado" FromRole="Estado" ToRole="Ciudad" />
+  </EntityType>
+  <EntityType Name="Facultad">
+    <Key>
+      <PropertyRef Name="ID_Facultad" />
+    </Key>
+    <Property Name="ID_Facultad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="codigo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fechaCreacion" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="universidad" Type="Int32" Nullable="false" />
+    <Property Name="ciudad" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Alumno" Relationship="Self.FK_Alumno_Facultad" FromRole="Facultad" ToRole="Alumno" />
+    <NavigationProperty Name="Ciudad1" Relationship="Self.FK__Facultad__ciudad__693CA210" FromRole="Facultad" ToRole="Ciudad" />
+    <NavigationProperty Name="Universidad1" Relationship="Self.FK_Facultad_Universidad" FromRole="Facultad" ToRole="Universidad" />
+    <NavigationProperty Name="MateriaFacultad" Relationship="EscuelaModel.FK_MateriaFacultad_MateriaFacultad" FromRole="Facultad" ToRole="MateriaFacultad" />
+  </EntityType>
+  <EntityType Name="Universidad">
+    <Key>
+      <PropertyRef Name="ID_Universidad" />
+    </Key>
+    <Property Name="ID_Universidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ciudad" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Ciudad1" Relationship="Self.FK__Universid__ciuda__656C112C" FromRole="Universidad" ToRole="Ciudad" />
+    <NavigationProperty Name="Facultad" Relationship="Self.FK_Facultad_Universidad" FromRole="Universidad" ToRole="Facultad" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="ID_Usuario" />
+    </Key>
+    <Property Name="ID_Usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="contrasena" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Alumno_Ciudad">
+    <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="1" />
+    <End Role="Alumno" Type="Self.Alumno" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ciudad">
+        <PropertyRef Name="ID_Ciudad" />
+      </Principal>
+      <Dependent Role="Alumno">
+        <PropertyRef Name="ciudad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Alumno_Facultad">
+    <End Role="Facultad" Type="Self.Facultad" Multiplicity="1" />
+    <End Role="Alumno" Type="Self.Alumno" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Facultad">
+        <PropertyRef Name="ID_Facultad" />
+      </Principal>
+      <Dependent Role="Alumno">
+        <PropertyRef Name="facultad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Facultad__ciudad__693CA210">
+    <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="1" />
+    <End Role="Facultad" Type="Self.Facultad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ciudad">
+        <PropertyRef Name="ID_Ciudad" />
+      </Principal>
+      <Dependent Role="Facultad">
+        <PropertyRef Name="ciudad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Universid__ciuda__656C112C">
+    <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="1" />
+    <End Role="Universidad" Type="Self.Universidad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ciudad">
+        <PropertyRef Name="ID_Ciudad" />
+      </Principal>
+      <Dependent Role="Universidad">
+        <PropertyRef Name="ciudad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ciudad_Estado">
+    <End Role="Estado" Type="Self.Estado" Multiplicity="1" />
+    <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estado">
+        <PropertyRef Name="ID_Estado" />
+      </Principal>
+      <Dependent Role="Ciudad">
+        <PropertyRef Name="estado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Facultad_Universidad">
+    <End Role="Universidad" Type="Self.Universidad" Multiplicity="1" />
+    <End Role="Facultad" Type="Self.Facultad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Universidad">
+        <PropertyRef Name="ID_Universidad" />
+      </Principal>
+      <Dependent Role="Facultad">
+        <PropertyRef Name="universidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EscuelaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Alumno" EntityType="Self.Alumno" />
+    <EntitySet Name="Ciudad" EntityType="Self.Ciudad" />
+    <EntitySet Name="Estado" EntityType="Self.Estado" />
+    <EntitySet Name="Facultad" EntityType="Self.Facultad" />
+    <EntitySet Name="Universidad" EntityType="Self.Universidad" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+    <AssociationSet Name="FK_Alumno_Ciudad" Association="Self.FK_Alumno_Ciudad">
+      <End Role="Ciudad" EntitySet="Ciudad" />
+      <End Role="Alumno" EntitySet="Alumno" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Alumno_Facultad" Association="Self.FK_Alumno_Facultad">
+      <End Role="Facultad" EntitySet="Facultad" />
+      <End Role="Alumno" EntitySet="Alumno" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Facultad__ciudad__693CA210" Association="Self.FK__Facultad__ciudad__693CA210">
+      <End Role="Ciudad" EntitySet="Ciudad" />
+      <End Role="Facultad" EntitySet="Facultad" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Universid__ciuda__656C112C" Association="Self.FK__Universid__ciuda__656C112C">
+      <End Role="Ciudad" EntitySet="Ciudad" />
+      <End Role="Universidad" EntitySet="Universidad" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ciudad_Estado" Association="Self.FK_Ciudad_Estado">
+      <End Role="Estado" EntitySet="Estado" />
+      <End Role="Ciudad" EntitySet="Ciudad" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Facultad_Universidad" Association="Self.FK_Facultad_Universidad">
+      <End Role="Universidad" EntitySet="Universidad" />
+      <End Role="Facultad" EntitySet="Facultad" />
+    </AssociationSet>
+    <EntitySet Name="Materia" EntityType="EscuelaModel.Materia" />
+    <EntitySet Name="MateriaFacultad" EntityType="EscuelaModel.MateriaFacultad" />
+    <AssociationSet Name="FK_MateriaFacultad_MateriaFacultad" Association="EscuelaModel.FK_MateriaFacultad_MateriaFacultad">
+      <End Role="Facultad" EntitySet="Facultad" />
+      <End Role="MateriaFacultad" EntitySet="MateriaFacultad" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MateriaFacultad_Materia" Association="EscuelaModel.FK_MateriaFacultad_Materia">
+      <End Role="Materia" EntitySet="Materia" />
+      <End Role="MateriaFacultad" EntitySet="MateriaFacultad" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Materia">
+    <Key>
+      <PropertyRef Name="ID_Materia" />
+    </Key>
+    <Property Name="ID_Materia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="MateriaFacultad" Relationship="EscuelaModel.FK_MateriaFacultad_Materia" FromRole="Materia" ToRole="MateriaFacultad" />
+  </EntityType>
+  <EntityType Name="MateriaFacultad">
+    <Key>
+      <PropertyRef Name="ID_MateriaFacultad" />
+    </Key>
+    <Property Name="ID_MateriaFacultad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Materia" Type="Int32" Nullable="false" />
+    <Property Name="Facultad" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Facultad1" Relationship="EscuelaModel.FK_MateriaFacultad_MateriaFacultad" FromRole="MateriaFacultad" ToRole="Facultad" />
+    <NavigationProperty Name="Materia1" Relationship="EscuelaModel.FK_MateriaFacultad_Materia" FromRole="MateriaFacultad" ToRole="Materia" />
+  </EntityType>
+  <Association Name="FK_MateriaFacultad_MateriaFacultad">
+    <End Type="EscuelaModel.Facultad" Role="Facultad" Multiplicity="1" />
+    <End Type="EscuelaModel.MateriaFacultad" Role="MateriaFacultad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Facultad">
+        <PropertyRef Name="ID_Facultad" />
+      </Principal>
+      <Dependent Role="MateriaFacultad">
+        <PropertyRef Name="Facultad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MateriaFacultad_Materia">
+    <End Type="EscuelaModel.Materia" Role="Materia" Multiplicity="1" />
+    <End Type="EscuelaModel.MateriaFacultad" Role="MateriaFacultad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Materia">
+        <PropertyRef Name="ID_Materia" />
+      </Principal>
+      <Dependent Role="MateriaFacultad">
+        <PropertyRef Name="Materia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,6 +45,8 @@
     <Compile Include="CiudadBLL.cs" />
     <Compile Include="EstadosBLL.cs" />
     <Compile Include="FacultadBLL.cs" />
+    <Compile Include="MateriaBLL.cs" />
+    <Compile Include="MateriaFacultadBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UniversidadBLL.cs" />
     <Compile Include="UsuarioBLL.cs" />
