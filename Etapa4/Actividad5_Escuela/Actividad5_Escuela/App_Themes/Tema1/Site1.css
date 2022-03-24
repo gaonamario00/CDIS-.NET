@@ -1,15 +1,15 @@
 ﻿
-.navbar-inverse {
-    background-color: #138950;
-    border-color: #080808;
-}
+/*.navbar-inverse {
+    background-color: black;
+    border-color: black;
+}*/
 
-/*Color de Facultades*/
+Color de Facultades
 .navbar-inverse .navbar-nav > li > a {
     color: #ffffff;
 }
 
-/*Color de Dar de alta Facultad*/
+Color de Dar de alta Facultad
 .navbar-inverse .navbar-brand {
     color: #ffffff;
 }

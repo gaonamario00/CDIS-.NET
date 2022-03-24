@@ -69,8 +69,7 @@ namespace Escuela_BLL
                     }
                 }
             }
-            else
-            {
+  
                 int tiempo = DateTime.Now.Year - fechaCreacion.Year;
 
                 if (tiempo > 122)
@@ -88,7 +87,7 @@ namespace Escuela_BLL
                         facultad.updateFacultad(ID_Facultad, codigo, nombre, fechaCreacion, universidad, ciudad);
                     }
                 }
-            }
+            
         }
 
         public void deleteFacultad(int ID_Facultad)

@@ -53,6 +53,7 @@ C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Actividad5_Escu
 C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Actividad5_Escuela\bin\Antlr3.Runtime.dll
 C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Actividad5_Escuela\bin\AspNet.ScriptManager.bootstrap.dll
 C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Actividad5_Escuela\bin\AspNet.ScriptManager.jQuery.dll
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Actividad5_Escuela\bin\Escuela_BLL.dll
 C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Actividad5_Escuela\bin\Microsoft.AspNet.FriendlyUrls.dll
 C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Actividad5_Escuela\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
 C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Actividad5_Escuela\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
@@ -62,11 +63,14 @@ C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Actividad5_Escu
 C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Actividad5_Escuela\bin\Newtonsoft.Json.dll
 C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Actividad5_Escuela\bin\System.Web.Optimization.dll
 C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Actividad5_Escuela\bin\WebGrease.dll
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Actividad5_Escuela\bin\Escuela_DAL.dll
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Actividad5_Escuela\bin\Escuela_BLL.pdb
 C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Actividad5_Escuela\bin\System.Web.Optimization.xml
 C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Actividad5_Escuela\bin\Newtonsoft.Json.xml
 C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Actividad5_Escuela\bin\Antlr3.Runtime.pdb
 C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Actividad5_Escuela\bin\Microsoft.AspNet.FriendlyUrls.xml
 C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Actividad5_Escuela\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Actividad5_Escuela\bin\Escuela_DAL.pdb
 C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Actividad5_Escuela\bin\es\System.Web.Optimization.resources.dll
 C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Actividad5_Escuela\bin\es\Microsoft.AspNet.FriendlyUrls.resources.dll
 C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Actividad5_Escuela\obj\Debug\Actividad5_Escuela.csproj.AssemblyReference.cache
@@ -74,7 +78,3 @@ C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Actividad5_Escu
 C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Actividad5_Escuela\obj\Debug\Actividad5_Escuela.csproj.CopyComplete
 C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Actividad5_Escuela\obj\Debug\Actividad5_Escuela.dll
 C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Actividad5_Escuela\obj\Debug\Actividad5_Escuela.pdb
-C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Actividad5_Escuela\bin\Escuela_BLL.dll
-C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Actividad5_Escuela\bin\Escuela_DAL.dll
-C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Actividad5_Escuela\bin\Escuela_BLL.pdb
-C:\Users\Lenovo\source\repos\CDIS .NET\Etapa4\Actividad5_Escuela\Actividad5_Escuela\bin\Escuela_DAL.pdb

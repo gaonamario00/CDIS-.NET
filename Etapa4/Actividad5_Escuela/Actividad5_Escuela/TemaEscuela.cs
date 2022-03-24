@@ -18,7 +18,7 @@ namespace Actividad5_Escuela
 
                 string tipo = dtUsuario.Rows[0]["tipo"].ToString();
 
-                if(tipo == "Administrador")
+                if(tipo.Equals("Administrador"))
                 {
                     Page.Theme = "Tema1";
                 }
